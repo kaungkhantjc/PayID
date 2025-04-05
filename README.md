@@ -9,6 +9,8 @@ A simple app to extract Transaction ID from the receipt image of KBZ Pay and Wav
 
 <img src="screenshots/preview_1.png" alt="Preview" width="350">
 
+https://github.com/user-attachments/assets/c723d015-210e-447c-b53c-9056a79f35a5
+
 ## Download
 
 <https://github.com/kaungkhantjc/PayID/releases>
