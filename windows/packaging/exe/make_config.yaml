@@ -1,0 +1,10 @@
+app_id: APP_ID_PLACEHOLDER
+app_version: APP_VERSION_PLACEHOLDER
+display_name: PayID
+app_name: PayID
+publisher_name: Kaung Khant Kyaw
+publisher_url: https://github.com/kaungkhantjc/PayID
+setup_icon_file: windows\runner\resources\app_icon.ico
+privileges_required: lowest
+create_desktop_icon: true
+script_template: inno_setup.iss
