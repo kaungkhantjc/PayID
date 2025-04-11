@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'package:fluent_ui/fluent_ui.dart';
 import 'package:http/http.dart' as http;
 import 'package:path_provider/path_provider.dart';
 import 'package:pay_id/app_utils.dart';
@@ -13,10 +14,22 @@ Future<OcrResult> performOcrTask(String path) async {
     List<String> installedLanguages = await _getInstalledLanguages();
     String installedLanguagesStr = installedLanguages.join(", ");
 
-    String ocrLanguages =
-        installedLanguages.contains("script\\Myanmar")
-            ? "eng+script\\Myanmar"
-            : (installedLanguages.contains("mya") ? "eng+mya" : "eng");
+    for(String lan in installedLanguages) {
+      debugPrint("Lan:$lan, length: ${lan.length}");
+
+      debugPrint("code: ${lan.codeUnits.toString()}, compare: ${"mya".codeUnits.toString()}");
+    }
+
+    String ocrLanguages = "eng";
+
+    if (installedLanguages.contains("mya")) {
+      ocrLanguages += "+mya";
+    }
+    if (installedLanguages.contains("script\\Myanmar")) {
+      ocrLanguages += "+script\\Myanmar";
+    }
+
+    debugPrint(ocrLanguages);
 
     String prefix =
         "$ocrVersion\nInstalled languages: $installedLanguagesStr\n\n";
@@ -84,6 +97,8 @@ Future<(File?, String?)> downloadImage(String url) async {
 Future<List<String>> _getInstalledLanguages() async {
   ProcessResult lanResult = await Process.run("tesseract", ["--list-langs"]);
   List<String> lanOutput = lanResult.stdout.toString().trim().split("\n");
+  lanOutput = lanOutput.map((lan) => lan.trim()).toList();
+
   return lanOutput.length > 1
       ? lanOutput.skip(1).toList()
       : [lanOutput.firstOrNull ?? ""];

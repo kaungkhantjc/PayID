@@ -1,5 +1,6 @@
 import 'package:fluent_ui/fluent_ui.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:pay_id/ui/drop_zone/drop_zone_view.dart';
 import 'package:pay_id/ui/left_pane.dart';
 import 'package:pay_id/ui/right_pane.dart';
@@ -13,7 +14,7 @@ void main() async {
   await windowManager.ensureInitialized();
 
   WindowOptions windowOptions = WindowOptions(
-    title: "Pay ID v1.0",
+    title: "Pay ID v1.0.1",
     size: Size(700, 470),
     center: true,
     alwaysOnTop: false,
@@ -36,6 +37,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: FluentThemeData(
         selectionColor: Colors.blue.withValues(alpha: 0.5),
+        fontFamily: GoogleFonts.notoSansMyanmar().fontFamily
       ),
       home: ScaffoldPage(
         padding: EdgeInsets.only(top: 5),
